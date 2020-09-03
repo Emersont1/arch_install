@@ -20,7 +20,7 @@ mv /mnt/etc/locale.gen /mnt/etc/locale.gen_old
 echo "en_GB.UTF-8 UTF-8" > /mnt/etc/locale.gen
 echo "KEYMAP=uk" > /etc/vconsole.conf
 echo "LANG=en_GB.UTF-8" > /mnt/etc/locale.conf
-echo $1 > /etc/hostname
+echo $1 > /mnt/etc/hostname
 
 timedatectl set-ntp true
 
