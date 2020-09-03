@@ -66,12 +66,8 @@ cp /mnt/etc/sudoers /mnt/etc/sudoers.old
 echo "root ALL=(ALL) ALL" >> /mnt/etc/sudoers
 echo "%wheel ALL=(ALL) NOPASSWD: ALL" >> /mnt/etc/sudoers
 
-curl https://mirror.repohost.de/disastrousaur.key > /mnt/disastrousaur.key
-arch-chroot /mnt pacman-key --add disastrousaur.key
-arch-chroot /mnt pacman -S yay
-
-#arch-chroot /mnt sudo -u $user bash -c "cd; git clone https://aur.archlinux.org/yay.git; cd yay; makepkg"
-#arch-chroot /mnt pacman --noconfirm -U $(find /mnt/home/$user/yay | grep \\.pkg | sed 's/\/mnt//g')
+arch-chroot /mnt sudo -u $user bash -c "cd; git clone https://aur.archlinux.org/yay.git; cd yay; makepkg"
+arch-chroot /mnt pacman --noconfirm -U $(find /mnt/home/$user/yay | grep \\.pkg | sed 's/\/mnt//g')
 
 arch-chroot /mnt sudo -u $user yay -S --noconfirm --removemake --nodiffmenu --noeditmenu plymouth plymouth-theme-arch-charge
 
